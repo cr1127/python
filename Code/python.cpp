@@ -26,14 +26,24 @@ Now is better than never. Although never is often better than right now.
 代码是现实世界事物在计算机世界中的映射
 写代码是将现实世界中的事物用计算机语言来描述
 
+python中变量不直接储存值，而是储存值的内存地址或者引用。
+
 #第三章Python的基本数据类型:
 Number : 数字
 整数 int
 浮点数 float 
+复数 complex
 其他语言:单精度(float) 双精度(double)
 其他语言:short long 
 type(2/2) /结果为float
 type(2//2) //结果为int
+// c = 3 + 4j
+// print(c + c)			复数相加
+// print(c.real)		复数实部
+// print(c.imag)		复数虚部
+// print(3 + 4j.imag)   3+(4j).imag
+
+测试两个实数是否足够接近用 math.isclose(0.4 - 0.3, 0.1)
 
 各进制的表示和转化
 二进制 0b+0或1
@@ -58,6 +68,13 @@ str 字符串
 	hello world
 	'''//"""
 print('hello world\nhello world' ) //\n换行
+
+// text = '''hello world !!!! '''
+// len(text)			字符串的长度
+// text.count('!')		字符串中!出现的次数
+// 'hello' int text    字符串是否有hello
+// '=' *20             字符串重复
+// 'good' + 'morning'  字符串连接
 
 转义字符
 \n 换行
@@ -91,6 +108,12 @@ hello \n world
 //list 列表
 [1,2,3]
 [[1], [a], [True]] 
+
+列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表
+列表是写在方括号[]之间，用逗号分隔开的元素列表
+列表索引值以0为开始值，-1为从末尾的开始位置
+列表可以用+操作符进行拼接，使用*表示重复
+
 //元组 tuple
 (1,2,3)
 (1,'-1',True)
@@ -100,6 +123,10 @@ hello \n world
 <class 'int'>
 >>> type(())
 <class 'tuple'>
+
+tuple与list类似，不同之处在于tuple的元素不能修改。
+tuple写在小括号里，用逗号隔开。
+元组的元素不可变，但可以包含可变的对象 list。
 
 str list tuple 序列
 >>> 'hello world'[2]
@@ -140,6 +167,9 @@ ord() #求ascll码
 >>> type(set())
 <class 'set'>
 
+set和dict类似，也是一组key的集合，但不存储value值。由于key不能重复所以，在set中，没有重复的key.
+set是无序的，重复元素在set中自动被过滤。
+
 #dict 字典  无相同键值
 {key1:value1, key2:value2}
 #通过key键访问到value
@@ -147,6 +177,7 @@ ord() #求ascll码
 {'Q': '新月打击', 'w': '苍白之瀑', 'E': '月之降临', 'R': '月神冲刺'}
 >>> {'Q':'新月打击','w':'苍白之瀑','E':'月之降临','R':'月神冲刺'}['R']
 '月神冲刺'
+dict 是无序的对象组合，使用键-值，具有极快的查找速度。
 key值必须是不可变类型 如 int, 'str' 不可以是list类型
 >>> type({})
 <class 'dict'>
@@ -186,7 +217,7 @@ id() #返回变量在内存的地址
 >>> a = (1,2,3)
 >>> a[0] = '1'
 Traceback (most recent call last):
-  File "<pyshell#27>", line 1, in <module>
+  File "<pyshell#27>, line 1, in <module>
     a[0] = '1'
 TypeError: 'tuple' object does not support item assignment
 >>> b = [1,2,3]
@@ -196,7 +227,7 @@ TypeError: 'tuple' object does not support item assignment
 >>> c = (1,2,3)
 >>> c.append(4)
 Traceback (most recent call last):
-  File "<pyshell#32>", line 1, in <module>
+  File "<pyshell#32>, line 1, in <module>
     c.append(4)
 AttributeError: 'tuple' object has no attribute 'append'
 >>> a = (1,2,[3,4,5])
@@ -209,11 +240,13 @@ AttributeError: 'tuple' object has no attribute 'append'
 (1, 2, [3, '4', 5])
 
 #运算符
+
 #算数运算符
 3/2 #求的是小数
-3//2 #求的是整数
+3//2 #求的是整数  向下取接近除数的整数
 5%2  #余数
 2**5 //2的多少方
+
 #赋值运算符
 =
 +=
@@ -222,6 +255,7 @@ AttributeError: 'tuple' object has no attribute 'append'
 %=
 **=
 //=
+
 #比较运算符
 ==
 !=
@@ -233,6 +267,7 @@ AttributeError: 'tuple' object has no attribute 'append'
 True
 >>> (1,2,3) < (1,3,2)
 True
+
 #逻辑运算符 bool类型
 and
 or 
@@ -244,10 +279,12 @@ True
 int float 0被认为是False, 非0表示True
 str  空字符串 False, True
 list [] 表示False 
+
 #成员运算符
 in 
 not in
 dict中 用键值key
+
 #身份运算符
 is
 is not
