@@ -44,6 +44,9 @@ type(2//2) //结果为int
 // print(3 + 4j.imag)   3+(4j).imag
 
 测试两个实数是否足够接近用 math.isclose(0.4 - 0.3, 0.1)
+复数的语法是real+image j/J
+实部和虚部又是浮点数
+方法conjugate返回复数的共轭复数
 
 各进制的表示和转化
 二进制 0b+0或1
@@ -114,6 +117,36 @@ hello \n world
 列表索引值以0为开始值，-1为从末尾的开始位置
 列表可以用+操作符进行拼接，使用*表示重复
 
+列表基本操作：
+<list1> + <list2>				连接两个链表
+<list> * <整数类型>				对列表进行整数次重复
+<list> [<整数类型>]				索引列表中的元素
+len(<seq>)						列表中元素个数
+<list>[<整数类型>:<整数类型>]	取列表的一个子序列
+for <var> int <list> :      	对列表进行循环列举
+<expr> in <list>				成员检查，判断<expr>是否在列表中
+
+列表相关方法
+<list>.append(x)				将元素x增加到列表的最后
+<list>.sort()					将列表元素排序
+<list>.reverse()				将列表元素反转
+<list>.index(x) 				返回第一次出现元素x的索引值
+<list>.insert(i,x) 				在位置i处插入新元素x
+<list>.count(x)					返回元素x在列表中的数量
+<list>.remove(x)				删除列表中第一次出现的元素x
+<list>.pop(i)					返回列表中位置i的元素，并删除它，如果i为空，则返回最后一个并删除
+del <list>						删除list
+
+列表推导式
+data = [2**i for i in range(64)]
+等价于
+data = []
+for i in range(64):
+	data.append(2**i)
+
+range(start,end,step)			[start,end) 从start开始每次加step
+range(end)						range(0,end,1)
+sample(<list>,num)				random中的，从<list>中选择出num个不同的数
 //元组 tuple
 (1,2,3)
 (1,'-1',True)
@@ -128,6 +161,7 @@ tuple与list类似，不同之处在于tuple的元素不能修改。
 tuple写在小括号里，用逗号隔开。
 元组的元素不可变，但可以包含可变的对象 list。
 
+与字符串一样，tuple之间可以用+号和*号进行运算
 str list tuple 序列
 >>> 'hello world'[2]
 'l'
@@ -142,6 +176,18 @@ True
 >>> 3 not in [1,2,3,4,5,6]
 False
 
+元组和列表的区别：
+1）元组是不可变的
+2）元组的访问速度比列表更快，开销更小。
+3）元组可以使得代码更安全。
+4）元组可以用作字典的键，也可以用作集合的元素，但是列表不可以，包含列表的元组也不可以。
+
+生成器表达式(使用数据推导式) 元素使用一次后就会失效的
+
+切片操作 适用于列表和元组
+[start:end:step] 默认[0:end:1]
+当step为负时，表示反向切片，这时start应该在end的右侧。
+
 len() #判断长度
 max() #最大值
 min() #最小值
@@ -150,6 +196,7 @@ ord() #求ascll码
 114
 >>> ord('d')
 100
+
 
 #集合 set  {} 
 特点：无序 不重复
